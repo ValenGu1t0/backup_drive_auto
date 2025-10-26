@@ -9,7 +9,7 @@ El comportamiento esperado es que la carpeta se crea o sobrescribe en la raíz d
 - Estructura ideal del repositorio
 
 ```
-backup_obsidian/
+backup_drive_auto/
 ├── main.py
 ├── requirements.txt
 ├── .gitignore
@@ -46,14 +46,14 @@ token.json
 ### 🚀 Instalación y uso (Windows / Linux)
 
 
-1. Clonar el repositorio
+**1. Clonar el repositorio**
 
 ```
 git clone https://github.com/ValenGu1t0/backup_drive_auto.git
 cd backup_drive_auto
 ```
 
-2. Crear y activar entorno virtual
+**2. Crear y activar entorno virtual**
 
 - Windows: 
 
@@ -80,42 +80,42 @@ google-auth-httplib2
 google-api-python-client
 ```
 
-3. Configurar credenciales de Google Cloud (paso a paso)
+**3. Configurar credenciales de Google Cloud (paso a paso)**
 
 Nota importante: Google muestra y permite descargar el client_secret **solo al momento de crear el secreto**. Si cerrás el dialogo sin descargar, después puede no estar disponible y tendrás que crear uno nuevo. Si ves un aviso en la consola sobre "viewing and downloading client secrets will no longer be available" o similar, seguí las indicaciones abajo.
 
 **a) Crear proyecto en Google Cloud**
 
 Entrá en https://console.cloud.google.com/ y logueate con tu cuenta.
-
-En la parte superior → Seleccionar proyecto → Nuevo proyecto. Ponle un nombre (ej. BackupObsidian) y crealo.
+En la parte superior -> Seleccionar proyecto -> Nuevo proyecto. Ponle un nombre (ej. BackupObsidian) y crealo.
 
 **b) Habilitar Google Drive API**
 
-Dentro del proyecto: API y servicios → Biblioteca.
+Dentro del proyecto: API y servicios -> Biblioteca.
 Buscá Google Drive API y hacé Habilitar.
 
 **c) Configurar pantalla de consentimiento (OAuth)**
 
-API y servicios → Pantalla de consentimiento OAuth.
+API y servicios -> Pantalla de consentimiento OAuth.
 Tipo: Externo (si vas a usarlo solo para tu cuenta, está bien).
 Completá los campos mínimos: nombre de la app, correo, y guardá.
 
 **d) Crear credenciales (ID de cliente OAuth)**
 
-API y servicios → Credenciales → Crear credenciales → ID de cliente de OAuth.
+API y servicios -> Credenciales -> Crear credenciales -> ID de cliente de OAuth.
 Aplicación: Escritorio.
+
 
 **IMPORTANTE: Al crear el ID verás un cuadro con el ID y el secreto y un botón “Descargar JSON”.**
 
-Descargá ese JSON de inmediato. Ese archivo es tu credentials.json. Si no lo descargaste o nunca apareció el cuadro, volvé a la fila del credential (icono lápiz) → Agregar secreto / Create new secret y descargalo justo después de crearlo.
+Descargá ese JSON de inmediato. Ese archivo es tu credentials.json. Si no lo descargaste o nunca apareció el cuadro, volvé a la fila del credential (icono lápiz) -> Agregar secreto / Create new secret y descargalo justo después de crearlo.
 
 Guardá el archivo descargado como credentials.json en la raíz del proyecto (backup_obsidian/credentials.json).
 
 Si el botón de descarga no aparece por problemas del navegador, probá otro navegador (Firefox, Chrome sin extensiones) o desactivá bloqueadores de popups. Si ya cerraste la ventana sin descargar, generá un nuevo client secret como se indicó.
 
 
-4. Ejecutar por primera vez (autorización)
+**4. Ejecutar por primera vez (autorización)**
 
 Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y el **entorno virtual activo**:
 
@@ -124,7 +124,7 @@ Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y 
 Se abrirá una ventana para que autorices la app con tu cuenta Google. Al autorizarse se generará `token.json` (almacena el token de acceso/refresh). Ese archivo ya está en .gitignore.
 
 
-5. Ajustar la ruta del Vault
+**5. Ajustar la ruta del Vault**
 
 En `main.py`, apenas comienza el archivo, hay una variable que apunta a la ruta de la carpeta a ser backupeada:
 
@@ -143,6 +143,7 @@ Modificala si tu Vault está en otra ruta (Windows: C:\Users\TuUsuario\Documents
 - Si un archivo ya existe en la misma carpeta de Drive, lo sobrescribe (actualiza) — no duplica.
 - Muestra en consola los archivos subidos/actualizados.
 
+---
 
 ### ⏰ Automatizar ejecución diaria
 
@@ -151,7 +152,7 @@ Si deseas automatizar esta tarea como yo, debes ingresar a:
 - Windows (Task Scheduler)
 
 Abrir Task Scheduler (Programador de tareas).
-Crear tarea básica: Programación diaria → acción: Iniciar un programa.
+Crear tarea básica: Programación diaria -> acción: Iniciar un programa.
 Programa: python (ruta completa del ejecutable dentro de venv\Scripts\python.exe).
 Argumentos: C:\ruta\a\backup_obsidian\main.py
 Configurar usuario y “Run whether user is logged on or not” si querés que corra en background.
@@ -162,12 +163,13 @@ Editar cron con crontab -e y añadir por ejemplo para ejecutar cada día a las 0
 
 0 2 * * * /home/tuusuario/backup_obsidian/venv/bin/python /home/tuusuario/backup_obsidian/main.py >> /home/tuusuario/backup_obsidian/backup.log 2>&1
 
+---
 
 ### 🧰 Problemas comunes
 
 - No se descargó credentials.json al crear el OAuth client:
 
--> Probá crear un nuevo secret (editar credencial → crear nuevo secreto) y descargarlo inmediatamente.
+-> Probá crear un nuevo secret (editar credencial -> crear nuevo secreto) y descargarlo inmediatamente.
 
 -> Probar otro navegador y desactivar bloqueadores de popup.
 
@@ -187,21 +189,23 @@ git push
 
 - Popup de autorización no se abre: el script flow.run_local_server() abre un navegador. Si usás servidor remoto o WSL sin GUI, usá flow.run_console() y pegá manualmente el URL/token que te da Google.
 
+---
 
 ### 🧾 Notas sobre permisos y alcance (SCOPES)
 
 El script usa por defecto:
 
-SCOPES = ['https://www.googleapis.com/auth/drive.file']
+`SCOPES = ['https://www.googleapis.com/auth/drive.file']`
 
-drive.file solo permite al script acceder y crear/editar archivos que la app crea o con los que el usuario la autoriza explícitamente. Es más seguro que pedir acceso completo a todo Drive.
+`drive.file` solo permite al script acceder y crear/editar archivos que la app crea o con los que el usuario la autoriza explícitamente. Es más seguro que pedir acceso completo a todo Drive.
 
 Si necesitás otro alcance (por ejemplo para listar todo Drive), deberás ajustar SCOPES y re-autenticar.
 
+---
 
 ### ✅ Verificación rápida (después de correr)
 
-Ejecutá python main.py.
+Ejecutá `python main.py`.
 
 Mirá la consola: verás mensajes `- Subido:` o `- Actualizado:`.
 

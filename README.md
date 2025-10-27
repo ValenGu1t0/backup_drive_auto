@@ -116,11 +116,11 @@ Si el botón de descarga no aparece por problemas del navegador, probá otro nav
 
 **4. Ejecutar por primera vez (autorización)**
 
-Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y el **entorno virtual activo**:
+Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y el **entorno virtual activo**, ejecuta el siguiente comando en la consola de tu editor de texto o en la terminal de windows:
 
 `python main.py`
 
-Se abrirá una ventana para que autorices la app con tu cuenta Google. Al autorizarse se generará `token.json` en la misma carpeta donde tenés este proyecto. Ese archivo ya está incluido en el `.gitignore` para tu seguridad.
+Se abrirá una ventana para que autorices la app con tu cuenta Google. Al autorizarse se generará `token.json` en la misma carpeta donde tenés el proyecto. Ese archivo ya está incluido en el `.gitignore` para tu seguridad.
 
 
 **5. Ajustar la ruta del Vault**

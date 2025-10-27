@@ -116,7 +116,7 @@ Si el botón de descarga no aparece por problemas del navegador, probá otro nav
 
 **4. Ejecutar por primera vez (autorización)**
 
-Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y el **entorno virtual activo**, ejecuta el siguiente comando en la consola de tu editor de texto o en la terminal de windows:
+Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y el **entorno virtual activo**, ejecuta el siguiente comando **posicionado en la carpeta del proyecto**, en la consola del IDE que estes usando o en la terminal de windows:
 
 `python main.py`
 

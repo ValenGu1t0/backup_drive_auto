@@ -222,3 +222,5 @@ Abrí tu Google Drive y verificá que exista la carpeta Obsidian Vault con las s
 - ¿Puedo incluir otros tipos de archivo? Sí: modificar la condición if file.endswith(...) en main.py.
 
 - ¿Puedo restaurar fácilmente desde Drive? Sí: descargá los archivos desde la carpeta Obsidian Vault en Drive.
+
+- Aunque está diseñado para automatizarlo con algun task manager, si no se usa durante mas de 7 dias, el token.json expira. Para volver a tener uno valido, eliminalo de la raíz del proyecto y volve a ejecutar el script. Te abrirá una ventana en google para volver darle acceso desde tu cuenta y obtener nuevamente el token en tu proyecto.

@@ -116,7 +116,7 @@ Si el botón de descarga no aparece por problemas del navegador, probá otro nav
 
 **4. Ejecutar por primera vez (autorización)**
 
-Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y el **entorno virtual activo**, ejecuta el siguiente comando en la consola de tu editor de texto o en la terminal de windows:
+Con **credentials.json ya en la carpeta del proyecto** que clonaste de github y el **entorno virtual activo**, ejecuta el siguiente comando **posicionado en la carpeta del proyecto**, en la consola del IDE que estes usando o en la terminal de windows:
 
 `python main.py`
 
@@ -222,5 +222,8 @@ Abrí tu Google Drive y verificá que exista la carpeta Obsidian Vault con las s
 - ¿Puedo incluir otros tipos de archivo? Sí: modificar la condición if file.endswith(...) en main.py.
 
 - ¿Puedo restaurar fácilmente desde Drive? Sí: descargá los archivos desde la carpeta Obsidian Vault en Drive.
+<<<<<<< HEAD
 
 - Aunque está diseñado para automatizarlo con algun task manager, si no se usa durante mas de 7 dias, el token.json expira. Para volver a tener uno valido, eliminalo de la raíz del proyecto y volve a ejecutar el script. Te abrirá una ventana en google para volver darle acceso desde tu cuenta y obtener nuevamente el token en tu proyecto.
+=======
+>>>>>>> 9f582828c18a3d518cc6f972c592421e037b89c2
